@@ -34,3 +34,5 @@ build/
 
 
 backend/model/*.keras
+ml-model/uploaded_image.jpg
+
