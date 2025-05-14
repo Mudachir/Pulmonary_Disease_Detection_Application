@@ -16,14 +16,33 @@ function CheckDisease() {
         setPrediction(null);
     };
 
-    const handleCheck = () => {
-        if (selectedModel && image) {
+  const handleCheck = async () => {
+    if (selectedModel && image) {
+        const fileInput = document.querySelector('input[type="file"]');
+        const formData = new FormData();
+        formData.append("image", fileInput.files[0]);
 
-            setPrediction('Prediction: COVID-19');
-        } else {
-            alert('Please select model and upload image');
+        try {
+            const response = await fetch("http://localhost:8080/api/predict", {
+                method: "POST",
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error("Prediction failed");
+            }
+
+            const result = await response.text(); 
+            setPrediction(`Prediction: ${result}`);
+        } catch (error) {
+            console.error("Prediction error:", error);
+            setPrediction("❌ Error occurred during prediction.");
         }
-    };
+    } else {
+        alert("Please select a model and upload an image.");
+    }
+};
+
 
     return (
         <div className="min-h-screen bg-gray-100 py-10 px-4">
@@ -39,8 +58,8 @@ function CheckDisease() {
                             className="w-full border border-gray-300 rounded px-3 py-2"
                         >
                             <option value="">-- Choose Model (.h5) --</option>
-                            <option value="model1">Model 1 - CNN</option>
-                            <option value="model2">Model 2 - ResNet</option>
+                            <option value="model1">Model 1 - VGG19</option>
+                            <option value="model2">Model 2 - VGG16</option>
                         </select>
                     </div>
 
