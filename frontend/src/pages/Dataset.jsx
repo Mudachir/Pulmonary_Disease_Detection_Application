@@ -31,7 +31,7 @@ const Dataset = () => {
 
         <div className="text-center">
           <a
-            href="https://drive.google.com/your-dataset-link"
+            href="https://drive.google.com/drive/folders/1BWtWOWgXu3VjAcvDvMt5h2xeoKeq2THK?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-full shadow"
@@ -71,7 +71,7 @@ const Dataset = () => {
 
         <div className="text-center">
           <a
-            href="https://drive.google.com/your-dataset-link"
+            href="https://drive.google.com/drive/folders/1lWQaSxX_rmgOwANFgY6YfHDoCKYYhmkp?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-full shadow"
