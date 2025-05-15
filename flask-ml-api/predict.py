@@ -5,7 +5,14 @@ import numpy as np
 import os
 
 app = Flask(__name__)
-model = load_model("best_model.keras")
+model_path = "best_model.keras"
+
+if not os.path.exists(model_path):
+    print("Downloading model from Google Drive...")
+    os.system("pip install gdown")
+    os.system("gdown --id 1K7F2H-U5yazwSLV5hwYtI5pFrL9capAQ")
+
+model = load_model(model_path)
 labels = ['COVID-19', 'Lung Opacity', 'Normal', 'Viral Pneumonia']
 
 @app.route("/predict", methods=["POST"])
