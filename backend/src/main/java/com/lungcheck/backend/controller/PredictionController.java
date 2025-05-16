@@ -6,7 +6,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+        "http://localhost:5173",
+        "https://pulmonary-disease-detection-application.vercel.app"
+})
 @RequestMapping("/api")
 public class PredictionController {
 
@@ -17,7 +20,6 @@ public class PredictionController {
         File tempFile = new File(imagePath);
         image.transferTo(tempFile);
 
-
         ProcessBuilder pb = new ProcessBuilder(
                 "E:/Pulmonary_Disease_Detection_Application/.venv/Scripts/python.exe",
                 "E:/Pulmonary_Disease_Detection_Application/ml-model/predict.py",
@@ -26,7 +28,6 @@ public class PredictionController {
 
         pb.redirectErrorStream(true);
         Process process = pb.start();
-
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line;

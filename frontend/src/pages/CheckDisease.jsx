@@ -45,8 +45,8 @@ function CheckDisease() {
 
 
     return (
-        <div className="min-h-screen bg-gray-100 py-10 px-4">
-            <div className="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-md grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="min-h-screen  py-10 px-4">
+            <div className="max-w-6xl mx-auto bg-gray-300 p-8 rounded-xl shadow-md grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <h1 className="text-2xl font-bold mb-4">🧪 Check Lung Condition</h1>
 
@@ -59,7 +59,7 @@ function CheckDisease() {
                         >
                             <option value="">-- Choose Model (.h5) --</option>
                             <option value="model1">Model 1 - VGG19</option>
-                            <option value="model2">Model 2 - VGG16</option>
+                            
                         </select>
                     </div>
 
@@ -85,7 +85,7 @@ function CheckDisease() {
                     {image ? (
                         <>
                             <img src={image} alt="Uploaded X-ray" className="max-h-48 mb-4 rounded shadow" />
-                            <p className="text-lg font-semibold text-gray-800">{prediction || 'Waiting for prediction...'}</p>
+                            <p className="text-lg font-semibold text-gray-800">{prediction || 'Please click Check Now to get your result'}</p>
                         </>
                     ) : (
                         <p className="text-gray-500">No input yet. Upload image and select model to get prediction.</p>
